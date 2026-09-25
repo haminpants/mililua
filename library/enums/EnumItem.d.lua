@@ -6,83 +6,83 @@
 ---@field FullName string # [Read] The fully qualified name of the enum (e.g., Enum.EaseType.InQuad).
 ---@field EnumType string # [Read] The name of the enum type (e.g., EaseType for Enum.EaseType.InQuad).
 
----See [Enum.ControllerKeyCode](lua://Enum.ControllerKeyCode) for all enum values.
+---See [Enum.ControllerKeyCode](https://haminpants.github.io/mililua/class/Enum.ControllerKeyCode.html) for all enum values.
 ---@class EnumItem.ControllerKeyCode : EnumItem
 
----See [Enum.ControllerNavigationDir](lua://Enum.ControllerNavigationDir) for all enum values.
+---See [Enum.ControllerNavigationDir](https://haminpants.github.io/mililua/class/Enum.ControllerNavigationDir.html) for all enum values.
 ---@class EnumItem.ControllerNavigationDir : EnumItem
 
----See [Enum.ControllerNavigationEventType](lua://Enum.ControllerNavigationEventType) for all enum values.
+---See [Enum.ControllerNavigationEventType](https://haminpants.github.io/mililua/class/Enum.ControllerNavigationEventType.html) for all enum values.
 ---@class EnumItem.ControllerNavigationEventType : EnumItem
 
----See [Enum.ControllerNavigationMode](lua://Enum.ControllerNavigationMode) for all enum values.
+---See [Enum.ControllerNavigationMode](https://haminpants.github.io/mililua/class/Enum.ControllerNavigationMode.html) for all enum values.
 ---@class EnumItem.ControllerNavigationMode : EnumItem
 
----See [Enum.CursorEventType](lua://Enum.CursorEventType) for all enum values.
+---See [Enum.CursorEventType](https://haminpants.github.io/mililua/class/Enum.CursorEventType.html) for all enum values.
 ---@class EnumItem.CursorEventType : EnumItem
 
----See [Enum.CustomVariableEntityType](lua://Enum.CustomVariableEntityType) for all enum values.
+---See [Enum.CustomVariableEntityType](https://haminpants.github.io/mililua/class/Enum.CustomVariableEntityType.html) for all enum values.
 ---@class EnumItem.CustomVariableEntityType : EnumItem
 
----See [Enum.Device](lua://Enum.Device) for all enum values.
+---See [Enum.Device](https://haminpants.github.io/mililua/class/Enum.Device.html) for all enum values.
 ---@class EnumItem.Device : EnumItem
 
----See [Enum.EaseType](lua://Enum.EaseType) for all enum values.
+---See [Enum.EaseType](https://haminpants.github.io/mililua/class/Enum.EaseType.html) for all enum values.
 ---@class EnumItem.EaseType : EnumItem
 
----See [Enum.ImageFillType](lua://Enum.ImageFillType) for all enum values.
+---See [Enum.ImageFillType](https://haminpants.github.io/mililua/class/Enum.ImageFillType.html) for all enum values.
 ---@class EnumItem.ImageFillType : EnumItem
 
----See [Enum.ImageFillHorizontalType](lua://Enum.ImageFillHorizontalType) for all enum values.
+---See [Enum.ImageFillHorizontalType](https://haminpants.github.io/mililua/class/Enum.ImageFillHorizontalType.html) for all enum values.
 ---@class EnumItem.ImageFillHorizontalType : EnumItem
 
----See [Enum.ImageFillRadial90Type](lua://Enum.ImageFillRadial90Type) for all enum values.
+---See [Enum.ImageFillRadial90Type](https://haminpants.github.io/mililua/class/Enum.ImageFillRadial90Type.html) for all enum values.
 ---@class EnumItem.ImageFillRadial90Type : EnumItem
 
----See [Enum.ImageFillRadialType](lua://Enum.ImageFillRadialType) for all enum values.
+---See [Enum.ImageFillRadialType](https://haminpants.github.io/mililua/class/Enum.ImageFillRadialType.html) for all enum values.
 ---@class EnumItem.ImageFillRadialType : EnumItem
 
----See [Enum.ImageFillVerticalType](lua://Enum.ImageFillVerticalType) for all enum values.
+---See [Enum.ImageFillVerticalType](https://haminpants.github.io/mililua/class/Enum.ImageFillVerticalType.html) for all enum values.
 ---@class EnumItem.ImageFillVerticalType : EnumItem
 
----See [Enum.ImageMaskSoftEdgeMode](lua://Enum.ImageMaskSoftEdgeMode) for all enum values.
+---See [Enum.ImageMaskSoftEdgeMode](https://haminpants.github.io/mililua/class/Enum.ImageMaskSoftEdgeMode.html) for all enum values.
 ---@class EnumItem.ImageMaskSoftEdgeMode : EnumItem
 
----See [Enum.ImageSource](lua://Enum.ImageSource) for all enum values.
+---See [Enum.ImageSource](https://haminpants.github.io/mililua/class/Enum.ImageSource.html) for all enum values.
 ---@class EnumItem.ImageSource : EnumItem
 
----See [Enum.ImageType](lua://Enum.ImageType) for all enum values.
+---See [Enum.ImageType](https://haminpants.github.io/mililua/class/Enum.ImageType.html) for all enum values.
 ---@class EnumItem.ImageType : EnumItem
 
----See [Enum.KeyEventType](lua://Enum.KeyEventType) for all enum values.
+---See [Enum.KeyEventType](https://haminpants.github.io/mililua/class/Enum.KeyEventType.html) for all enum values.
 ---@class EnumItem.KeyEventType : EnumItem
 
----See [Enum.KeyboardKeyCode](lua://Enum.KeyboardKeyCode) for all enum values.
+---See [Enum.KeyboardKeyCode](https://haminpants.github.io/mililua/class/Enum.KeyboardKeyCode.html) for all enum values.
 ---@class EnumItem.KeyboardKeyCode : EnumItem
 
----See [Enum.LanguageType](lua://Enum.LanguageType) for all enum values.
+---See [Enum.LanguageType](https://haminpants.github.io/mililua/class/Enum.LanguageType.html) for all enum values.
 ---@class EnumItem.LanguageType : EnumItem
 
----See [Enum.ParamType](lua://Enum.ParamType) for all enum values.
+---See [Enum.ParamType](https://haminpants.github.io/mililua/class/Enum.ParamType.html) for all enum values.
 ---@class EnumItem.ParamType : EnumItem
 
----See [Enum.ScrollAlignType](lua://Enum.ScrollAlignType) for all enum values.
+---See [Enum.ScrollAlignType](https://haminpants.github.io/mililua/class/Enum.ScrollAlignType.html) for all enum values.
 ---@class EnumItem.ScrollAlignType : EnumItem
 
----See [Enum.ScrollDirection](lua://Enum.ScrollDirection) for all enum values.
+---See [Enum.ScrollDirection](https://haminpants.github.io/mililua/class/Enum.ScrollDirection.html) for all enum values.
 ---@class EnumItem.ScrollDirection : EnumItem
 
----See [Enum.ScrollLayoutConstraint](lua://Enum.ScrollLayoutConstraint) for all enum values.
+---See [Enum.ScrollLayoutConstraint](https://haminpants.github.io/mililua/class/Enum.ScrollLayoutConstraint.html) for all enum values.
 ---@class EnumItem.ScrollLayoutConstraint : EnumItem
 
----See [Enum.StageMode](lua://Enum.StageMode) for all enum values.
+---See [Enum.StageMode](https://haminpants.github.io/mililua/class/Enum.StageMode.html) for all enum values.
 ---@class EnumItem.StageMode : EnumItem
 
----See [Enum.TextHorizontalAlignment](lua://Enum.TextHorizontalAlignment) for all enum values.
+---See [Enum.TextHorizontalAlignment](https://haminpants.github.io/mililua/class/Enum.TextHorizontalAlignment.html) for all enum values.
 ---@class EnumItem.TextHorizontalAlignment : EnumItem
 
----See [Enum.TextVerticalAlignment](lua://Enum.TextVerticalAlignment) for all enum values.
+---See [Enum.TextVerticalAlignment](https://haminpants.github.io/mililua/class/Enum.TextVerticalAlignment.html) for all enum values.
 ---@class EnumItem.TextVerticalAlignment : EnumItem
 
----See [Enum.UIAnimationLayer](lua://Enum.UIAnimationLayer) for all enum values.
+---See [Enum.UIAnimationLayer](https://haminpants.github.io/mililua/class/Enum.UIAnimationLayer.html) for all enum values.
 ---@class EnumItem.UIAnimationLayer : EnumItem
