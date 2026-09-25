@@ -75,9 +75,11 @@ function ServerSignal:AddIntList(values) end
 ---Appends a parameter to the Server Signal instance.
 ---
 ---Behavior for unexpected type values are documented in the add function for the corresponding type.
+---
+---**See:**
+---- [Enum.ParamType](https://haminpants.github.io/mililua/class/Enum.ParamType.html) for all valid parameter types.
 ---@param type EnumItem.ParamType # The type that the parameter should be interpreted as.
 ---@param value ServerDataType # The value that should be sent for the added parameter.
----@see Enum.ParamType
 function ServerSignal:AddParam(type, value) end
 
 ---Appends a Prefab ID to the Server Signal instance.

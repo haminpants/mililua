@@ -53,10 +53,11 @@ function Tween:Resume() end
 ---
 ---Only takes effect if the Tween is in the Initial state.
 ---
----[Interactive Easing Simulator](https://interverse.github.io/easelab/)
+---**See:**
+---- [Enum.EaseType](https://haminpants.github.io/mililua/class/Enum.EaseType.html) for all ease types.
+---- [Interactive Easing Simulator](https://interverse.github.io/easelab/) to visualize the effect of each ease type.
 ---@param easeType EnumItem.EaseType # The easing function to animate fields with.
 ---@return Tween # The current Tween instance.
----@see Enum.EaseType
 function Tween:SetEase(easeType) end
 
 ---Sets the number of times the Tween will complete playback before moving to the Completed state and returns the current instance.
