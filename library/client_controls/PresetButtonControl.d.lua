@@ -8,22 +8,28 @@
 local ClientUIPresetButtonControl = {}
 
 ---Registers a cursor event listener to the Client Control.
+---
+---**See:**
+---- [Enum.CursorEventType](https://haminpants.github.io/mililua/class/Enum.CursorEventType.html) for all cursor event types.
+---- [CursorEventData](https://haminpants.github.io/mililua/class/CursorEventData.html)
 ---@param eventType EnumItem.CursorEventType # The cursor event type to listen for.
 ---@param callback fun(eventData: CursorEventData) # The callback function, which exposes data about the cursor event.
----@see Enum.CursorEventType
----@see CursorEventData
 function ClientUIPresetButtonControl:AddCursorEventListener(eventType, callback) end
 
 ---Removes the specified cursor event listener from the Client Control.
+---
+---**See:**
+---- [Enum.CursorEventType](https://haminpants.github.io/mililua/class/Enum.CursorEventType.html) for all cursor event types.
+---- [CursorEventData](https://haminpants.github.io/mililua/class/CursorEventData.html)
 ---@param eventType EnumItem.CursorEventType # The event type to remove the callback from.
 ---@param callback fun(eventData: CursorEventData) # The callback function to remove.
----@see Enum.CursorEventType
----@see CursorEventData
 function ClientUIPresetButtonControl:RemoveCursorEventListener(eventType, callback) end
 
 ---Removes all cursor event listeners for the specified event type from the Client Control.
+---
+---**See:**
+---- [Enum.CursorEventType](https://haminpants.github.io/mililua/class/Enum.CursorEventType.html) for all cursor event types.
 ---@param eventType EnumItem.CursorEventType # The event type to clear listeners from.
----@see Enum.CursorEventType
 function ClientUIPresetButtonControl:RemoveCursorEventListeners(eventType) end
 
 ---Removes all cursor event listeners from the Client Control.

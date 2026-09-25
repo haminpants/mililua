@@ -38,15 +38,19 @@ local ClientUIBaseControl = {}
 ---Registers a key event listener to the Client Control.
 ---
 ---The callback function must return a boolean which determines whether to mark the event as complete. If marked as complete, subsequent key event listeners of the same event type will be called, even if on a different root-level ContainerControl.
+---
+---**See:**
+---- [Enum.KeyEventType](https://haminpants.github.io/mililua/class/Enum.KeyEventType.html) for all key event types.
 ---@param eventType EnumItem.KeyEventType # The key event type to listen for.
 ---@param callback fun(): boolean # The callback function, returning a boolean representing whether to mark the event as completed.
----@see Enum.KeyEventType
 function ClientUIBaseControl:AddKeyEventListener(eventType, callback) end
 
 ---Registers a controller navigation event listener.
+---
+---**See:**
+---- [Enum.ControllerNavigationEventType](https://haminpants.github.io/mililua/class/Enum.ControllerNavigationEventType.html) for all controller navigation event types.
 ---@param eventType EnumItem.ControllerNavigationEventType # The controller navigation type to listen for.
 ---@param callback fun() # The function to call when the event is triggered.
----@see Enum.ControllerNavigationEventType
 function ClientUIBaseControl:AddNavigationEventListener(eventType, callback) end
 
 ---Gets a child by path. If multiple children with the same path exist, the first by descending sibling index order is returned.
@@ -66,11 +70,13 @@ function ClientUIBaseControl:AddNavigationEventListener(eventType, callback) end
 function ClientUIBaseControl:FindChild(path) end
 
 ---Returns the navigation mode and target for the specified direction.
+---
+---**See:**
+---- [Enum.ControllerNavigationDir](https://haminpants.github.io/mililua/class/Enum.ControllerNavigationDir.html) for all controller navigation directions.
+---- [Enum.ControllerNavigationMode](https://haminpants.github.io/mililua/class/Enum.ControllerNavigationMode.html) for all controller navigation modes.
 ---@param navigationDir EnumItem.ControllerNavigationDir # The direction to get navigation settings for.
 ---@return EnumItem.ControllerNavigationMode navigationMode # The navigation mode for the specified direction.
 ---@return ClientControlType? navigationTarget # The target Client Control. Only set for the Specified navigation mode.
----@see Enum.ControllerNavigationDir
----@see Enum.ControllerNavigationMode
 function ClientUIBaseControl:GetControllerNavigation(navigationDir) end
 
 ---Returns the maximum anchors as a normalized percentage of the parent's size, originating from the bottom-left corner of the parent's bounding box.
@@ -142,8 +148,10 @@ function ClientUIBaseControl:GetScripts() end
 ---Returns the 0-indexed position of the Client Control in the parent's list of children.
 ---
 ---Returns -1 for root-level ContainerControls.
+---
+---**See:**
+---- [ClientUIBaseControl.SetSiblingIndex](https://haminpants.github.io/mililua/class/ClientUIBaseControl.html#ClientUIBaseControl.SetSiblingIndex) for detailed sibling-index behavior.
 ---@return number index # The 0-indexed position of the Client Control in the parent's list of children.
----@see ClientUIBaseControl.SetSiblingIndex for sibling-index behavior.
 function ClientUIBaseControl:GetSiblingIndex() end
 
 ---Returns the difference in size between the Client Control and the distance between its minimum and maximum anchors.
@@ -160,25 +168,33 @@ function ClientUIBaseControl:RemoveAllKeyEventListeners() end
 function ClientUIBaseControl:RemoveAllNavigationEventListeners() end
 
 ---Removes the specified key event listener from the Client Control.
+---
+---**See:**
+---- [Enum.KeyEventType](https://haminpants.github.io/mililua/class/Enum.KeyEventType.html) for all key event types.
 ---@param eventType EnumItem.KeyEventType # The event type to remove the callback from.
 ---@param callback fun(): boolean # The callback function to remove.
----@see Enum.KeyEventType
 function ClientUIBaseControl:RemoveKeyEventListener(eventType, callback) end
 
 ---Removes all key event listeners for the specified event type from the Client Control.
+---
+---**See:**
+---- [Enum.KeyEventType](https://haminpants.github.io/mililua/class/Enum.KeyEventType.html) for all key event types.
 ---@param eventType EnumItem.KeyEventType # The event type to clear listeners from.
----@see Enum.KeyEventType
 function ClientUIBaseControl:RemoveKeyEventListeners(eventType) end
 
 ---Removes the specified controller navigation event listener from the Client Control.
+---
+---**See:**
+---- [Enum.ControllerNavigationEventType](https://haminpants.github.io/mililua/class/Enum.ControllerNavigationEventType.html) for all controller navigation event types.
 ---@param eventType EnumItem.ControllerNavigationEventType # The event type to remove the callback from.
 ---@param callback fun() # The callback function to remove.
----@see Enum.ControllerNavigationEventType
 function ClientUIBaseControl:RemoveNavigationEventListener(eventType, callback) end
 
 ---Removes all listeners for the specified event type from the Client Control.
+---
+---**See:**
+---- [Enum.ControllerNavigationEventType](https://haminpants.github.io/mililua/class/Enum.ControllerNavigationEventType.html) for all controller navigation event types.
 ---@param eventType EnumItem.ControllerNavigationEventType # The event type to clear listeners from.
----@see Enum.ControllerNavigationEventType
 function ClientUIBaseControl:RemoveNavigationEventListeners(eventType) end
 
 ---Sets the active status of the Client Control.
@@ -209,28 +225,34 @@ function ClientUIBaseControl:SetAnchoredPosition(x, y) end
 
 ---Sets the Client Control as the first child (index 0) of its parent.
 ---
+---**See:**
+---- [ClientUIBaseControl.SetSiblingIndex](https://haminpants.github.io/mililua/class/ClientUIBaseControl.html#ClientUIBaseControl.SetSiblingIndex) for detailed sibling-index behavior.
+---
 ---Pending Documentation:
 ---- Unknown return value, seems to always return true.
----@return boolean # ?
----@see ClientUIBaseControl.SetSiblingIndex for sibling-index behavior.
+---@return boolean unknown # ?
 function ClientUIBaseControl:SetAsFirstSibling() end
 
 ---Sets the Client Control as the last child (greatest index) of its parent.
 ---
+---**See:**
+---- [ClientUIBaseControl.SetSiblingIndex](https://haminpants.github.io/mililua/class/ClientUIBaseControl.html#ClientUIBaseControl.SetSiblingIndex) for detailed sibling-index behavior.
+---
 ---Pending Documentation:
 ---- Unknown return value, seems to always return true.
----@return boolean # ?
----@see ClientUIBaseControl.SetSiblingIndex for sibling-index behavior.
+---@return boolean unknown # ?
 function ClientUIBaseControl:SetAsLastSibling() end
 
 ---Sets the controller navigation mode for a specific navigation direction.
 ---
 ---If Enum.ControllerNavigationMode.Specified is passed and the navigation target is nil, the navigation mode will be set to None.
+---
+---**See:**
+---- [Enum.ControllerNavigationDir](https://haminpants.github.io/mililua/class/Enum.ControllerNavigationDir.html) for all controller navigation directions.
+---- [Enum.ControllerNavigationMode](https://haminpants.github.io/mililua/class/Enum.ControllerNavigationMode.html) for all controller navigation modes.
 ---@param navigationDir EnumItem.ControllerNavigationDir # The navigation direction to apply the navigation mode to.
 ---@param navigationMode EnumItem.ControllerNavigationMode # The navigation mode to use.
 ---@param navigationTarget? ClientControlType # The navigation target. Required if the Specified navigation mode is passed, otherwise this parameter is ignored.
----@see Enum.ControllerNavigationDir
----@see Enum.ControllerNavigationMode
 function ClientUIBaseControl:SetControllerNavigation(navigationDir, navigationMode, navigationTarget) end
 
 ---Sets the local rotation of the Client Control.

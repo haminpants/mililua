@@ -14,17 +14,21 @@ function game.DestroyClientUIControl(control) end
 ---When a root-level ContainerControl is added to the Client UI hierarchy by using the "Activate UI Control Group in Control Group Library" node on a Server Control Template containing a Client Container Control component, the created ContainerControl is appended to the Client UI hierarchy, regardless of the layer specified in its template.
 ---
 ---Returns nil if no matches are found.
+---
+---**See:**
+---- [ClientUIBaseControl.name](https://haminpants.github.io/mililua/class/ClientUIBaseControl.html#ClientUIBaseControl.name)
 ---@param name string # The name of the Client Control to find.
 ---@return ClientUIContainerControl? control # The root-level ContainerControl with the specified name.
----@see ClientUIBaseControl.name
 function game.FindClientUIRoot(name) end
 
 ---Gets a Client Control by runtime ID.
 ---
 ---Returns nil if no matches are found.
+---
+---**See:**
+---- [ClientUIBaseControl.id](https://haminpants.github.io/mililua/class/ClientUIBaseControl.html#ClientUIBaseControl.id)
 ---@param id number # The runtime ID of the Client Control to find.
 ---@return ClientControlType? control # The Client Control with the corresponding runtime ID.
----@see ClientUIBaseControl.id
 function game.GetClientUIControl(id) end
 
 ---Returns a sequence containing all active root-level ContainerControls.
@@ -57,27 +61,35 @@ function game.GetControllerRightStickAxis() end
 function game.GetCursorUIPos() end
 
 ---Returns the current input device type.
+---
+---**See:**
+---- [Enum.Device](https://haminpants.github.io/mililua/class/Enum.Device.html) for all valid device types.
 ---@return EnumItem.Device device # The current device type.
----@see Enum.Device
 function game.GetDevice() end
 
 ---Gets a declared Custom Variable from the specified entity.
 ---
 ---Returns nil if a Custom Variable with the provided name is not declared on the entity.
+---
+---**See:**
+---- [Enum.CustomVariableEntityType](https://haminpants.github.io/mililua/class/Enum.CustomVariableEntityType.html) for all entities that Custom Variables can be retrieved from.
 ---@param entity EnumItem.CustomVariableEntityType # The entity to get the Custom Variable from.
 ---@param varName string # The name of the Custom Variable to get.
 ---@return ServerDataType? value # The value of the Custom Variable.
----@see Enum.CustomVariableEntityType
 function game.GetGlobalCustomVariableValue(entity, varName) end
 
 ---Returns the language used by the client.
+---
+---**See:**
+---- [Enum.LanguageType](https://haminpants.github.io/mililua/class/Enum.LanguageType.html) for all valid languages.
 ---@return EnumItem.LanguageType language # The current language.
----@see Enum.LanguageType
 function game.GetLanguageType() end
 
 ---Returns the current stage mode.
+---
+---**See:**
+---- [Enum.StageMode](https://haminpants.github.io/mililua/class/Enum.StageMode.html) for all stage modes.
 ---@return EnumItem.StageMode # The stage mode.
----@see Enum.StageMode
 function game.GetStageMode() end
 
 ---Returns the localized value of a Script Text Variable by Text Mapping ID.
@@ -97,10 +109,12 @@ function game.GetUICanvasSize() end
 ---Creates a new Client Control instance.
 ---
 ---The created Client Control is appended to the parent's list of children, assigning it the next largest sibling index.
+---
+---**See:**
+---- [ClientUIBaseControl.SetSiblingIndex](https://haminpants.github.io/mililua/class/ClientUIBaseControl.html#ClientUIBaseControl.SetSiblingIndex) for detailed sibling-index behavior.
 ---@param templateIndex number # The index of the Client Control Template to create.
 ---@param parent ClientControlType # The Client Control which will be the parent of the created Client Control.
 ---@return ClientControlType # The created Client Control instance.
----@see ClientUIBaseControl.SetSiblingIndex for sibling-index behavior.
 function game.InstantiateClientUIControl(templateIndex, parent) end
 
 ---Checks if the specified audio instance is currently active in memory.
