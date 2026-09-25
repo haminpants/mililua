@@ -57,8 +57,24 @@ function Script:RegisterCustomVariableChangedHandler(entity, varName, callback) 
 ---Only signals sent using the Send Client Scripted Signal server node will be handled, and **all server-sent signals have a minimum latency of approximately 100ms.**
 ---
 ---Callback parameters can only be accessed by sequence index, matching the order in the Server Signal Explorer.
----@param signalName string # The name of the signal to register a handler for.
----@param callback fun(signalName: string, signalParams: ServerDataType[]) # The callback to execute whenever the signal is received.
+---
+---To get typed signal parameters, create a class type with the same name as your signal. See below:
+---```lua
+------@class MySignal
+------@field [1] string
+------@field [2] integer
+------@field [3] Vector3[]
+---
+---script:RegisterServerSignalHandler("MySignal", function(signalName, signalParams)
+---    local str =      signalParams[1]
+---    local int =      signalParams[2]
+---    local vec3List = signalParams[3]
+---end)
+---```
+---
+---@generic T : ServerDataType[]
+---@param signalName `T` # The name of the signal to register a handler for.
+---@param callback fun(signalName: string, signalParams: T) # The callback to execute whenever the signal is received.
 function Script:RegisterServerSignalHandler(signalName, callback) end
 
 ---Removes the handler for the specified Custom Variable.
