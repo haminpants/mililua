@@ -279,7 +279,7 @@ function ClientUIBaseControl:SetPivot(x, y) end
 ---Pending Documentation:
 ---- Unknown return value, seems to always return true.
 ---@param index integer # The 0-indexed position in the parent's list of children. Automatically clamped within the valid range of indexes.
----@return boolean # ?
+---@return boolean unknown # ?
 function ClientUIBaseControl:SetSiblingIndex(index) end
 
 ---Sets the size offset between the Client Control and the its anchor bounds.
