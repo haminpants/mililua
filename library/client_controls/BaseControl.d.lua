@@ -209,22 +209,20 @@ function ClientUIBaseControl:SetAnchorMin(x, y) end
 function ClientUIBaseControl:SetAnchoredPosition(x, y) end
 
 ---Sets the Client Control as the first child (index 0) of its parent.
+---- Throws an error if called before OnStart or during OnDestroy.
+---- Returns false only when called on a root-level ContainerControl.
 ---
 ---**See:**
 ---- [ClientUIBaseControl.GetSiblingIndex](https://haminpants.github.io/mililua/class/ClientUIBaseControl.html#ClientUIBaseControl.GetSiblingIndex) for detailed sibling-index behavior.
----
----Pending Documentation:
----- Unknown return value, seems to always return true.
 ---@return boolean unknown # Always true?
 function ClientUIBaseControl:SetAsFirstSibling() end
 
 ---Sets the Client Control as the last child (greatest index) of its parent.
+---- Throws an error if called before OnStart or during OnDestroy.
+---- Returns false only when called on a root-level ContainerControl.
 ---
 ---**See:**
 ---- [ClientUIBaseControl.GetSiblingIndex](https://haminpants.github.io/mililua/class/ClientUIBaseControl.html#ClientUIBaseControl.GetSiblingIndex) for detailed sibling-index behavior.
----
----Pending Documentation:
----- Unknown return value, seems to always return true.
 ---@return boolean unknown # Always true?
 function ClientUIBaseControl:SetAsLastSibling() end
 
@@ -257,14 +255,13 @@ function ClientUIBaseControl:SetLocalScale(x, y, z) end
 function ClientUIBaseControl:SetPivot(x, y) end
 
 ---Sets the 0-indexed position of the Client Control in the parent's list of children.
+---- Throws an error if called before OnStart or during OnDestroy.
+---- Returns false only when called on a root-level ContainerControl.
 ---
 ---**See:**
 ---- [ClientUIBaseControl.GetSiblingIndex](https://haminpants.github.io/mililua/class/ClientUIBaseControl.html#ClientUIBaseControl.GetSiblingIndex) for detailed sibling-index behavior.
----
----Pending Documentation:
----- Unknown return value, seems to always return true.
 ---@param index integer # The 0-indexed position in the parent's list of children. Automatically clamped within the valid range of indexes.
----@return boolean unknown # Always true?
+---@return boolean success # Whether the sibling index was changed.
 function ClientUIBaseControl:SetSiblingIndex(index) end
 
 ---Sets the size offset between the Client Control and the its anchor bounds.
