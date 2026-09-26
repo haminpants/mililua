@@ -15,7 +15,8 @@
 ---@class Tween
 local Tween = {}
 
----Immediately completes Tween playback and calls the OnStepComplete and OnComplete callbacks.
+---Immediately completes Tween playback, moving the Tween to the Completed state.
+---- The OnStepComplete and OnComplete callbacks of the Tween will be called.
 function Tween:Complete() end
 
 ---Destroys the Tween.
@@ -23,35 +24,27 @@ function Tween:Complete() end
 function Tween:Kill(complete) end
 
 ---Pauses Tween playback, moving the Tween to the Paused state.
----
----Manual modifications made to tweened fields while paused will be overriden by the Tween's calculated values upon resuming.
----
----Only takes effect if the Tween is in the Playing state.
+---- Only takes effect if the Tween is in the Playing state.
+---- Manual modifications made to tweened fields while paused will be overriden by the Tween's calculated values upon resuming.
 function Tween:Pause() end
 
 ---Starts Tween playback, moving the Tween to the Playing state, and returns the current instance.
----
----While in the Playing state, fields being tweened cannot be changed.
----
----Only takes effect if the Tween is in the Initial state.
+---- Only takes effect if the Tween is in the Initial state.
+---- While in the Playing state, fields being tweened cannot be changed.
 ---@return Tween # The current Tween instance.
 function Tween:Play() end
 
 ---Resets the tweened fields to their initial values and begins playback from the start.
----
----Only takes effect if the Tween is not in the Initial state.
+---- Only takes effect if the Tween is not in the Initial state.
 function Tween:Restart() end
 
 ---Resumes Tween playback, moving the Tween to the Playing state.
----
----Manual modifications made to tweened fields while paused will be overriden by the Tween's calculated values upon resuming.
----
----Only takes effect if the Tween is in the Paused state.
+---- Only takes effect if the Tween is in the Paused state.
+---- Manual modifications made to tweened fields while paused will be overriden by the Tween's calculated values upon resuming.
 function Tween:Resume() end
 
 ---Sets the easing function of the Tween and returns the current instance.
----
----Only takes effect if the Tween is in the Initial state.
+---- Only takes effect if the Tween is in the Initial state.
 ---
 ---**See:**
 ---- [Enum.EaseType](https://haminpants.github.io/mililua/class/Enum.EaseType.html) for all ease types.
@@ -61,39 +54,32 @@ function Tween:Resume() end
 function Tween:SetEase(easeType) end
 
 ---Sets the number of times the Tween will complete playback before moving to the Completed state and returns the current instance.
----
----The Tween will always play at least once; a negative value will cause the Tween to loop indefinitely.
----
----Only takes effect if the Tween is in the Initial state.
+---- The number of loops can only be set if the Tween is in the Initial state.
+---- The Tween will always play at least once; a negative value will cause the Tween to loop indefinitely.
 ---@param loops number # The number of times to loop playback.
 ---@return Tween # The current Tween instance.
 function Tween:SetLoops(loops) end
 
 ---Sets the OnComplete callback and returns current instance.
----
----The OnComplete callback is called when Tween playback completes.
----
----Only takes effect if the Tween is in the Initial state.
+---- Callbacks can only be set if the Tween is in the Initial state.
+---- The OnComplete callback is called when Tween playback completes.
 ---@param callback fun() # The function to call when the Tween completes.
 ---@return Tween # The current Tween instance.
 function Tween:SetOnComplete(callback) end
 
 ---Sets the OnStepComplete callback and returns current instance.
----
----The OnStepComplete callback is called when the Tween loops or completes playback.
----
----Only takes effect if the Tween is in the Initial state.
+---- Callbacks can only be set if the Tween is in the Initial state.
+---- The OnStepComplete callback is called when the Tween loops or completes playback.
 ---@param callback fun() # The function to call when the Tween loops or completes playback.
 ---@return Tween # The current Tween instance.
 function Tween:SetOnStepComplete(callback) end
 
 ---Sets how the target values are interpreted during the tween and returns the current instance.
+---- The relative tween mode can only be set if the Tween is in the Initial state.
 ---
 ---When tweening relatively:
 ---- Target values are interpreted as being added to the values stored in the Initial state.
 ---- Only number fields will be applied. Color fields will not take effect.
----
----Only takes effect if the Tween is in the Initial state.
 ---@param relative boolean # Whether to interpret target values relative to the values stored in the Initial state.
 ---@return Tween # The current Tween instance.
 function Tween:SetRelative(relative) end

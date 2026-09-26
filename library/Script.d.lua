@@ -22,16 +22,14 @@ local Script = {}
 function Script:EnableUpdate(enabled) end
 
 ---Gets the value of a Script Variable defined in the script's mapping by name.
----
----Returns nil if a Script Variable with the specified name does not exist.
+---- Returns nil if a Script Variable with the specified name does not exist.
 ---@generic T : ServerDataType
 ---@param varName string # The name of the Script Variable.
----@return T? # The value of the Script Variable.
+---@return T? value # The value of the Script Variable.
 function Script:GetParam(varName) end
 
 ---Calls a global function by name.
----
----If calling a global function from another script instance, it is recommended to check that the target script is alive.
+---- If calling a global function from another script instance, it is recommended to check that the target script is alive.
 ---
 ---**See:**
 ---- [Script.alive](https://haminpants.github.io/mililua/class/Script.html#Script.alive)
@@ -40,9 +38,9 @@ function Script:GetParam(varName) end
 ---@return any ... # The return values of the called function.
 function Script:Invoke(funcName, ...) end
 
----Registers a Custom Variable changed handler for the specified variable name and entity. The callback function does not provide pre-change or post-change values.
----
----Multiple handlers for the same Custom Variable cannot be registered on the same script; only the earliest handler will take effect.
+---Registers a Custom Variable changed handler for the specified variable name and entity.
+---- Multiple handlers for the same Custom Variable cannot be registered on the same script; only the earliest handler will take effect.
+---- The callback function does not provide pre-change or post-change values.
 ---
 ---**See:**
 ---- [Enum.CustomVariableEntityType](https://haminpants.github.io/mililua/class/Enum.CustomVariableEntityType.html) for all entities that Custom Variables changes can be handled on.

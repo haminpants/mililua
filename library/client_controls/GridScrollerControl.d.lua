@@ -16,8 +16,7 @@
 local ClientUIGridScrollerControl = {}
 
 ---Destroys all existing list item Client Controls, then instantiates the specified number of Client Controls as list items and invokes a callback for each item.
----
----The corresponding lifecycle functions will be called for all affected Client Controls.
+---- The corresponding lifecycle functions will be called for all affected Client Controls.
 ---
 ---**See:**
 ---- [OnDisable](https://haminpants.github.io/mililua/global/OnDisable.html)
@@ -32,8 +31,7 @@ local ClientUIGridScrollerControl = {}
 function ClientUIGridScrollerControl:RefreshItems(itemCount, callback) end
 
 ---Gets the 0-indexed position of the specified Client Control in the Grid Scroller's internal list.
----
----Returns -1 if the specified Client Control is not in the Grid Scroller's internal list.
+---- Returns -1 if the specified Client Control is not in the Grid Scroller's internal list.
 ---@param control ClientControlType # The Client Control to get the index of.
 ---@return integer index # The 0-indexed position of the specified Client Control in the Grid Scroller's internal list.
 function ClientUIGridScrollerControl:GetItemIndex(control) end

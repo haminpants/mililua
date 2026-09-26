@@ -5,10 +5,13 @@
 ---@return ApiType typeName
 function typeof(value) end
 
----Writes passed values to the log. Client Script logging must be enabled.
+---Writes passed values to the log.
+---- Client Script logging must be enabled.
 function print(...) end
 
----Writes passed values to the log as an error. Client Script logging must be enabled.
+---Writes passed values to the log as an error.
+---- Client Script logging must be enabled.
+---- Does not block execution.
 function printerr(...) end
 
 ---Creates a color from 0-255 RGBA.
@@ -19,11 +22,8 @@ function printerr(...) end
 ---@return ColorValue
 function Color(r, g, b, a) end
 
----Called when the Client Control that the script is attached to is initialized.
----
----Called immediately when a Client Control with the script attached is instantiated.
----
----Ignored by Module scripts.
+---Called immediately when the Client Control that the script is attached to is initialized.
+---- Ignored by Module scripts.
 ---
 ---### Stage Start Lifecycle Function Call Order
 ---1. **Top Level Code > OnInit - Global Script**
@@ -37,11 +37,9 @@ function Color(r, g, b, a) end
 ---9. OnDestroy - Global Script (On Stage End)
 function OnInit() end
 
----Called when the Client Control that the script is attached to is activated.
----
----Called immediately after OnInit when a Client Control with the script attached is instantiated.
----
----Ignored by Module scripts.
+---Called when the active state of the Client Control that the script is attached to changes to true.
+---- Also called after OnInit for initally active Client Controls that have been pre-placed in the Client Control Container.
+---- Ignored by Module scripts.
 ---
 ---### Stage Start Lifecycle Function Call Order
 ---1. Top Level Code > OnInit - Global Script
@@ -55,11 +53,8 @@ function OnInit() end
 ---9. OnDestroy - Global Script (On Stage End)
 function OnEnable() end
 
----Called when the script starts.
----
----Called immediately after OnEnable when a Client Control with the script attached is instantiated.
----
----Ignored by Module scripts.
+---Called after the first time the Client Control's OnEnable callback is called.
+---- Ignored by Module scripts.
 ---
 ---### Stage Start Lifecycle Function Call Order
 ---1. Top Level Code > OnInit - Global Script
@@ -73,21 +68,19 @@ function OnEnable() end
 ---9. OnDestroy - Global Script (On Stage End)
 function OnStart() end
 
----Called when the Client Control that the script is attached to is deactivated. Also called before OnDestroy when the Client Control the script is attached to is destroyed.
----
----Ignored by Module scripts.
+---Called when the active state of the Client Control that the script is attached to changes to false.
+---- Also called before OnDestroy when the Client Control the script is attached to is destroyed.
+---- Ignored by Module scripts.
 function OnDisable() end
 
 ---Called when the Client Control that the script is attached to is destroyed.
----
----Ignored by Module scripts.
+---- Also called by the Global Script when the stage ends; however, there is no guarantee that the function will execute before the client disconnects.
+---- Ignored by Module scripts.
 function OnDestroy() end
 
 ---Called once every frame.
----
----Updates must be enabled for the script for this lifecycle function to be called.
----
----Ignored by Module scripts.
+---- Updates must be enabled for the script for this lifecycle function to be called.
+---- Ignored by Module scripts.
 ---
 ---### Stage Start Lifecycle Function Call Order
 ---1. Top Level Code > OnInit - Global Script
@@ -103,10 +96,8 @@ function OnDestroy() end
 function OnUpdate(deltaTime) end
 
 ---Called once after OnUpdate every frame when level-time is not paused.
----
----Updates must be enabled for the script for this lifecycle function to be called.
----
----Ignored by Module scripts.
+---- Updates must be enabled for the script for this lifecycle function to be called.
+---- Ignored by Module scripts.
 ---
 ---### Stage Start Lifecycle Function Call Order
 ---1. Top Level Code > OnInit - Global Script

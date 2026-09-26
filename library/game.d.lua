@@ -7,13 +7,11 @@ game = {}
 ---@param control ClientControlType # The Client Control to destroy.
 function game.DestroyClientUIControl(control) end
 
----Gets a root-level ContainerControl by name. If multiple root-level ContainerControls with the same name exist, the first matching ContainerControl by runtime instantiation order will be returned.
----
----Root-level ContainerControls are instantiated in descending order from the list displayed in the editor's Interface Layout menu.
----
----When a root-level ContainerControl is added to the Client UI hierarchy by using the "Activate UI Control Group in Control Group Library" node on a Server Control Template containing a Client Container Control component, the created ContainerControl is appended to the Client UI hierarchy, regardless of the layer specified in its template.
----
----Returns nil if no matches are found.
+---Gets a root-level ContainerControl by name.
+---- If multiple root-level ContainerControls with the same name exist, the first matching ContainerControl by runtime instantiation order will be returned.
+---- Root-level ContainerControls are instantiated in descending order from the list displayed in the editor's Interface Layout menu.
+---- When a root-level ContainerControl is added to the Client UI hierarchy using the "Activate UI Control Group in Control Group Library" node on a Server Control Template containing a Client Container Control component, the created ContainerControl is appended to the Client UI hierarchy, regardless of the layer specified in its template.
+---- Returns nil if no matches are found.
 ---
 ---**See:**
 ---- [ClientUIBaseControl.name](https://haminpants.github.io/mililua/class/ClientUIBaseControl.html#ClientUIBaseControl.name)
@@ -22,8 +20,7 @@ function game.DestroyClientUIControl(control) end
 function game.FindClientUIRoot(name) end
 
 ---Gets a Client Control by runtime ID.
----
----Returns nil if no matches are found.
+---- Returns nil if no matches are found.
 ---
 ---**See:**
 ---- [ClientUIBaseControl.id](https://haminpants.github.io/mililua/class/ClientUIBaseControl.html#ClientUIBaseControl.id)
@@ -36,21 +33,18 @@ function game.GetClientUIControl(id) end
 function game.GetClientUIRoots() end
 
 ---Returns the Client Control currently focused by the controller.
----
----Returns nil if no Client Control is focused.
+---- Returns nil if no Client Control is focused.
 ---@return ClientControlType? # The Client Control currently focused by the controller.
 function game.GetControllerFocus() end
 
 ---Returns the left stick input values of the connected controller.
----
----Each axis returns a range within -1 (down/left) and 1 (up/right), with 0 representing no input.
+---- Each axis returns a range within -1 (down/left) and 1 (up/right), with 0 representing no input.
 ---@return number horizontalInput # The horizontal axis input strength.
 ---@return number verticalInput # The vertical axis input strength.
 function game.GetControllerLeftStickAxis() end
 
 ---Returns the right stick input values of the connected controller.
----
----Each axis returns a range within -1 (down/left) and 1 (up/right), with 0 representing no input.
+---- Each axis returns a range within -1 (down/left) and 1 (up/right), with 0 representing no input.
 ---@return number horizontalInput # The horizontal axis input strength.
 ---@return number verticalInput # The vertical axis input strength.
 function game.GetControllerRightStickAxis() end
@@ -68,8 +62,7 @@ function game.GetCursorUIPos() end
 function game.GetDevice() end
 
 ---Gets a declared Custom Variable from the specified entity.
----
----Returns nil if a Custom Variable with the provided name is not declared on the entity.
+---- Returns nil if a Custom Variable with the provided name is not declared on the entity.
 ---
 ---**See:**
 ---- [Enum.CustomVariableEntityType](https://haminpants.github.io/mililua/class/Enum.CustomVariableEntityType.html) for all entities that Custom Variables can be retrieved from.
@@ -93,10 +86,8 @@ function game.GetLanguageType() end
 function game.GetStageMode() end
 
 ---Returns the localized value of a Script Text Variable by Text Mapping ID.
----
----If a translation is not provided for the current language, text from the Source Language will be returned.
----
----Returns `textMappingId` if no Script Text Variable with the specified ID is found.
+---- If a translation is not provided for the current language, text from the Source Language will be returned.
+---- Returns the textMappingId if no Script Text Variable with the specified ID is found.
 ---@param textMappingId string # The ID of the Script Text Variable.
 ---@return string localizedText # The localized text.
 function game.GetText(textMappingId) end
@@ -107,8 +98,7 @@ function game.GetText(textMappingId) end
 function game.GetUICanvasSize() end
 
 ---Creates a new Client Control instance.
----
----The created Client Control is appended to the parent's list of children, assigning it the next largest sibling index.
+---- The created Client Control is appended to the parent's list of children, assigning it the next largest sibling index.
 ---
 ---**See:**
 ---- [ClientUIBaseControl.SetSiblingIndex](https://haminpants.github.io/mililua/class/ClientUIBaseControl.html#ClientUIBaseControl.SetSiblingIndex) for detailed sibling-index behavior.
@@ -118,8 +108,7 @@ function game.GetUICanvasSize() end
 function game.InstantiateClientUIControl(templateIndex, parent) end
 
 ---Checks if the specified audio instance is currently active in memory.
----
----Returns false if an audio instance for the provided ID does not exist.
+---- Returns false if an audio instance for the provided ID does not exist.
 ---@param audioInstanceId number # The ID of the audio instance to check the status of.
 ---@return boolean alive # Whether the audio instance for the given ID is alive.
 function game.IsAudioAlive(audioInstanceId) end
@@ -133,8 +122,7 @@ function game.IsLevelTimePaused() end
 function game.IsTestPlay() end
 
 ---Suspends or resumes level time.
----
----While paused, OnLevelUpdate lifecycle functions will not execute.
+---- While paused, OnLevelUpdate lifecycle functions will not execute.
 ---
 ---Only takes effect in single-player stages.
 ---@param pause boolean # Whether to pause level time.
@@ -161,7 +149,8 @@ function game.SetControllerFocus(control) end
 ---@param audioInstanceId number # The ID of the audio instance to stop.
 function game.StopAudio(audioInstanceId) end
 
----Creates a Tween instance targeting the given object. Once created, the target values can no longer be changed.
+---Creates a Tween instance targeting the given object.
+---- Once created, the target values can no longer be changed.
 ---@param object ClientControlType # The object to modify the fields of.
 ---@param targetValues TweenTarget # A table containing the target values of fields to modify during the Tween. A warning will be raised if a field in the table is not tweenable.
 ---@param duration number # The duration of the Tween in seconds.
