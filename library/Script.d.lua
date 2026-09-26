@@ -52,13 +52,27 @@ function Script:Invoke(funcName, ...) end
 ---@param callback fun(entity: EnumItem.CustomVariableEntityType, varName: string) # The callback to execute whenever the specified Custom Variable changes.
 function Script:RegisterCustomVariableChangedHandler(entity, varName, callback) end
 
----Registers a Client Scripted Signal handler for the specified signal name. Multiple handlers for the same signal cannot be registered on the same script; only the earliest handler will take effect.
+---Registers a Client Scripted Signal handler for the specified signal name.
+---- Multiple handlers for the same signal cannot be registered on the same script; only the earliest handler will take effect.
+---- Only signals sent using the Send Client Scripted Signal server node will be handled, and **all server-sent signals have a minimum latency of approximately 100ms.**
+---- Callback parameters can only be accessed by sequence index, matching the order in the Server Signal Explorer.
 ---
----Only signals sent using the Send Client Scripted Signal server node will be handled, and **all server-sent signals have a minimum latency of approximately 100ms.**
+---To get typed signal parameters, create a class using [LuaLS annotations](https://luals.github.io/wiki/annotations/#class) with the same name as your signal. See below:
+---```lua
+------@class MySignal
+------@field [1] string
+------@field [2] integer
+------@field [3] Vector3[]
 ---
----Callback parameters can only be accessed by sequence index, matching the order in the Server Signal Explorer.
----@param signalName string # The name of the signal to register a handler for.
----@param callback fun(signalName: string, signalParams: ServerDataType[]) # The callback to execute whenever the signal is received.
+---script:RegisterServerSignalHandler("MySignal", function(signalName, signalParams)
+---    local myString = signalParams[1] -- Now typed as a string
+---    local myInt = signalParams[2] -- Now typed as an integer
+---    local myVec3List = signalParams[3] -- Now typed as a 3D Vector list
+---end)
+---```
+---@generic T : ServerDataType[]
+---@param signalName `T` # The name of the signal to register a handler for.
+---@param callback fun(signalName: string, signalParams: T|GenericServerSignal) # The callback to execute whenever the signal is received.
 function Script:RegisterServerSignalHandler(signalName, callback) end
 
 ---Removes the handler for the specified Custom Variable.
