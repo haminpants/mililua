@@ -19,24 +19,22 @@ function ServerSignal:AddBoolList(values) end
 function ServerSignal:AddConfigId(value) end
 
 ---Appends a Config ID List to the Server Signal instance.
----
----Floating Point Numbers in the sequence are evaluated as 0, and negative numbers underflow to their 32-bit unsigned integer equivalent.
----
----Throws an error if the table contains fields not in sequence, or values that are not numbers.
+---- Floating Point Numbers in the sequence are evaluated as 0.
+---- Negative numbers underflow to their 32-bit unsigned integer equivalent.
+---- Throws an error if the table contains fields not in sequence, or values that are not numbers.
 ---@param values number[] # The sequence of Config IDs to append.
 function ServerSignal:AddConfigIdList(values) end
 
 ---Appends an Entity to the Server Signal instance.
----
----Floating Point Numbers are evaluated as 0, and negative numbers underflow to their 32-bit unsigned integer equivalent.
+---- Floating Point Numbers are evaluated as 0.
+---- Negative numbers underflow to their 32-bit unsigned integer equivalent.
 ---@param value number # The ID of the Entity to append.
 function ServerSignal:AddEntity(value) end
 
 ---Appends an Entity List to the Server Signal instance.
----
----Floating Point Numbers in the sequence are evaluated as 0, and negative numbers underflow to their 32-bit unsigned integer equivalent.
----
----Throws an error if the table contains fields not in sequence, or values that are not numbers.
+---- Floating Point Numbers in the sequence are evaluated as 0.
+---- Negative numbers underflow to their 32-bit unsigned integer equivalent.
+---- Throws an error if the table contains fields not in sequence, or values that are not numbers.
 ---@param values number[] # The sequence of Entity IDs to append.
 function ServerSignal:AddEntityList(values) end
 
@@ -49,16 +47,15 @@ function ServerSignal:AddFloat(value) end
 function ServerSignal:AddFloatList(values) end
 
 ---Appends a GUID to the Server Signal instance.
----
----Floating Point Numbers are evaluated as 0, and negative numbers underflow to their 32-bit unsigned integer equivalent.
+---- Floating Point Numbers are evaluated as 0.
+---- Negative numbers underflow to their 32-bit unsigned integer equivalent.
 ---@param value number # The GUID to append.
 function ServerSignal:AddGuid(value) end
 
 ---Appends a GUID List to the Server Signal instance.
----
----Floating Point Numbers in the sequence are evaluated as 0, and negative numbers underflow to their 32-bit unsigned integer equivalent.
----
----Throws an error if the table contains fields not in sequence, or values that are not numbers.
+---- Floating Point Numbers in the sequence are evaluated as 0.
+---- Negative numbers underflow to their 32-bit unsigned integer equivalent.
+---- Throws an error if the table contains fields not in sequence, or values that are not numbers.
 ---@param values number[] # The sequence of GUIDs to append.
 function ServerSignal:AddGuidList(values) end
 
@@ -67,14 +64,12 @@ function ServerSignal:AddGuidList(values) end
 function ServerSignal:AddInt(value) end
 
 ---Appends an Integer List parameter to the Server Signal instance.
----
----Throws an error if the table contains fields not in sequence, or values that are not numbers.
+---- Throws an error if the table contains fields not in sequence, or values that are not numbers.
 ---@param values number[] # The sequence of Integers to append. Floating Point Numbers in the sequence are evaluated as 0.
 function ServerSignal:AddIntList(values) end
 
 ---Appends a parameter to the Server Signal instance.
----
----Behavior for unexpected type values are documented in the add function for the corresponding type.
+---- Behavior for unexpected type values are documented in the add function for the corresponding type.
 ---
 ---**See:**
 ---- [Enum.ParamType](https://haminpants.github.io/mililua/class/Enum.ParamType.html) for all valid parameter types.
@@ -83,16 +78,15 @@ function ServerSignal:AddIntList(values) end
 function ServerSignal:AddParam(type, value) end
 
 ---Appends a Prefab ID to the Server Signal instance.
----
----Floating Point Numbers are evaluated as 0, and negative numbers underflow to their 32-bit unsigned integer equivalent.
+---- Floating Point Numbers are evaluated as 0.
+---- Negative numbers underflow to their 32-bit unsigned integer equivalent.
 ---@param value number # The Prefab ID to append.
 function ServerSignal:AddPrefabId(value) end
 
 ---Appends a Prefab ID List to the Server Signal instance.
----
----Floating Point Numbers in the sequence are evaluated as 0, and negative numbers underflow to their 32-bit unsigned integer equivalent.
----
----Throws an error if the table contains fields not in sequence, or values that are not numbers.
+---- Floating Point Numbers in the sequence are evaluated as 0.
+---- Negative numbers underflow to their 32-bit unsigned integer equivalent.
+---- Throws an error if the table contains fields not in sequence, or values that are not numbers.
 ---@param values number[] # The sequence of Prefab IDs to append.
 function ServerSignal:AddPrefabIdList(values) end
 
@@ -113,6 +107,5 @@ function ServerSignal:AddVector3(value) end
 function ServerSignal:AddVector3List(values) end
 
 ---Sends the signal.
----
----Only Node Graphs will receive the signal, and the Signal Source Entity will always be the Stage Entity.
+---- Only Node Graphs will receive the signal, and the Signal Source Entity will always be the Stage Entity.
 function ServerSignal:SendSignal() end
