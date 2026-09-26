@@ -85,7 +85,9 @@ function TweenSequence:Restart() end
 function TweenSequence:Resume() end
 
 ---Sets the number of times the Tween Sequence will complete playback before moving to the Completed state and returns the current instance.
----@param loops number # The number of times to loop playback. The Tween Sequence will still play once if set to 0.
+---- The number of loops can only be set if the Tween Sequence is in the Initial state.
+---- The Tween Sequence will always play at least once; a negative value will cause the Tween Sequence to loop indefinitely.
+---@param loops number # The number of times to loop playback.
 ---@return TweenSequence # The current Tween Sequence instance.
 function TweenSequence:SetLoops(loops) end
 
