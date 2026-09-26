@@ -35,7 +35,7 @@ function TweenSequence:AppendCallback(callback) end
 function TweenSequence:AppendInterval(duration) end
 
 ---Immediately completes Tween Sequence playback, moving the Tween Sequence to the Completed state.
----- The OnStepComplete and OnComplete callbacks of the Tween Sequence and all Tweens will be triggered.
+---- The OnStepComplete and OnComplete callbacks of the Tween Sequence and all Tweens will be called.
 function TweenSequence:Complete() end
 
 ---Inserts a Tween at a specific time and returns the current instance.
