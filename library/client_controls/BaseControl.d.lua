@@ -36,8 +36,7 @@
 local ClientUIBaseControl = {}
 
 ---Registers a key event listener to the Client Control.
----
----The callback function must return a boolean which determines whether to mark the event as complete. If marked as complete, subsequent key event listeners of the same event type will be called, even if on a different root-level ContainerControl.
+---- The callback function must return a boolean which determines whether to mark the event as complete. If marked as complete, subsequent key event listeners of the same event type will be called, even if on a different root-level ContainerControl.
 ---
 ---**See:**
 ---- [Enum.KeyEventType](https://haminpants.github.io/mililua/class/Enum.KeyEventType.html) for all key event types.
@@ -53,9 +52,9 @@ function ClientUIBaseControl:AddKeyEventListener(eventType, callback) end
 ---@param callback fun() # The function to call when the event is triggered.
 function ClientUIBaseControl:AddNavigationEventListener(eventType, callback) end
 
----Gets a child by path. If multiple children with the same path exist, the first by descending sibling index order is returned.
----
----Returns nil if there are no children with the specified path.
+---Gets a child by relative hierarchy path.
+---- If multiple children with the same path exist, the first by descending sibling index order is returned.
+---- Returns nil if there are no children with the specified path.
 ---
 ---Consider the following hierarchy:
 ---```
@@ -90,8 +89,7 @@ function ClientUIBaseControl:GetAnchorMax() end
 function ClientUIBaseControl:GetAnchorMin() end
 
 ---Returns the position of the pivot point relative to the anchor point.
----
----If anchorMin equals to anchorMax on a given axis, the anchor point for that axis resolves to anchorMin.
+---- If anchorMin equals to anchorMax on a given axis, the anchor point for that axis resolves to anchorMin.
 ---
 ---Pending Documentation:
 ---- Behavior when anchorMin is not equal to anchorMax on a given axis.
@@ -99,9 +97,9 @@ function ClientUIBaseControl:GetAnchorMin() end
 ---@return number y # The y-axis distance of the pivot point relative to the anchor point.
 function ClientUIBaseControl:GetAnchoredPosition() end
 
----Gets a child by name. If multiple children with the same name exist, the first by descending sibling index order is returned.
----
----Returns nil if there are no children with the specified name.
+---Gets a child by name.
+---- If multiple children with the same name exist, the first by descending sibling index order is returned.
+---- Returns nil if there are no children with the specified name.
 ---@param name string # The name used to retrieve a child.
 ---@return ClientControlType? child # The first child with the specified name.
 function ClientUIBaseControl:GetChild(name) end
@@ -128,15 +126,13 @@ function ClientUIBaseControl:GetLocalScale() end
 function ClientUIBaseControl:GetPivot() end
 
 ---Gets the instance of a script attached to the Client Control by Script Mapping ID.
----
----Returns nil if the script with the specified Script Mapping ID is not attached to the Client Control.
+---- Returns nil if the script with the specified Script Mapping ID is not attached to the Client Control.
 ---@param scriptPrefabIndex number # The Script Mapping ID used to retrieve a script instance.
 ---@return Script? script # The script instance with the specified Script Mapping ID.
 function ClientUIBaseControl:GetScript(scriptPrefabIndex) end
 
 ---Gets the instance of a script attached to the Client Control by file path, relative to the `external_lua_file` folder.
----
----Returns nil if the script with the specified file path is not attached to the Client Control.
+---- Returns nil if the script with the specified file path is not attached to the Client Control.
 ---@param path string # The file path of the script, excluding the file extension.
 ---@return Script? script # The script instance with the specified path.
 function ClientUIBaseControl:GetScriptByPath(path) end
@@ -146,8 +142,7 @@ function ClientUIBaseControl:GetScriptByPath(path) end
 function ClientUIBaseControl:GetScripts() end
 
 ---Returns the 0-indexed position of the Client Control in the parent's list of children.
----
----Returns -1 for root-level ContainerControls.
+---- Returns -1 for root-level ContainerControls.
 ---
 ---**See:**
 ---- [ClientUIBaseControl.SetSiblingIndex](https://haminpants.github.io/mililua/class/ClientUIBaseControl.html#ClientUIBaseControl.SetSiblingIndex) for detailed sibling-index behavior.
@@ -155,8 +150,7 @@ function ClientUIBaseControl:GetScripts() end
 function ClientUIBaseControl:GetSiblingIndex() end
 
 ---Returns the difference in size between the Client Control and the distance between its minimum and maximum anchors.
----
----If anchorMin equals to anchorMax on a given axis, the delta for that axis represents the Client Control's size along that axis.
+---- If anchorMin equals to anchorMax on a given axis, the delta for that axis represents the Client Control's size along that axis.
 ---@return number deltaX # The size offset between the width of the Client Control and its x-axis anchor bounds.
 ---@return number deltaY # The size offset between the height of the Control and its y-axis anchor bounds.
 function ClientUIBaseControl:GetSizeDelta() end
@@ -198,8 +192,7 @@ function ClientUIBaseControl:RemoveNavigationEventListener(eventType, callback) 
 function ClientUIBaseControl:RemoveNavigationEventListeners(eventType) end
 
 ---Sets the active status of the Client Control.
----
----If the active status is changed, the corresponding lifecycle functions are called (OnEnable when true and OnDisable when false).
+---- If the active status is changed, the corresponding lifecycle functions are called (OnEnable when true and OnDisable when false).
 ---@param active boolean # Whether to set as active.
 function ClientUIBaseControl:SetActive(active) end
 
@@ -214,8 +207,7 @@ function ClientUIBaseControl:SetAnchorMax(x, y) end
 function ClientUIBaseControl:SetAnchorMin(x, y) end
 
 ---Sets the position of the pivot point relative to the anchor point.
----
----If anchorMin equals to anchorMax on a given axis, the anchor point for that axis resolves to anchorMin.
+---- If anchorMin equals to anchorMax on a given axis, the anchor point for that axis resolves to anchorMin.
 ---
 ---Pending Documentation:
 ---- Behavior when anchorMin is not equal to anchorMax on a given axis.
@@ -230,7 +222,7 @@ function ClientUIBaseControl:SetAnchoredPosition(x, y) end
 ---
 ---Pending Documentation:
 ---- Unknown return value, seems to always return true.
----@return boolean unknown # ?
+---@return boolean unknown # Always true?
 function ClientUIBaseControl:SetAsFirstSibling() end
 
 ---Sets the Client Control as the last child (greatest index) of its parent.
@@ -240,12 +232,11 @@ function ClientUIBaseControl:SetAsFirstSibling() end
 ---
 ---Pending Documentation:
 ---- Unknown return value, seems to always return true.
----@return boolean unknown # ?
+---@return boolean unknown # Always true?
 function ClientUIBaseControl:SetAsLastSibling() end
 
 ---Sets the controller navigation mode for a specific navigation direction.
----
----If Enum.ControllerNavigationMode.Specified is passed and the navigation target is nil, the navigation mode will be set to None.
+---- If Enum.ControllerNavigationMode.Specified is passed and the navigation target is nil, the navigation mode will be set to None.
 ---
 ---**See:**
 ---- [Enum.ControllerNavigationDir](https://haminpants.github.io/mililua/class/Enum.ControllerNavigationDir.html) for all controller navigation directions.
@@ -273,18 +264,17 @@ function ClientUIBaseControl:SetLocalScale(x, y, z) end
 function ClientUIBaseControl:SetPivot(x, y) end
 
 ---Sets the 0-indexed position of the Client Control in the parent's list of children.
----
----Higher-index siblings are rendered on top of lower-index siblings, meaning children are listed in descending sibling order in the editor.
+---- Higher-index siblings are rendered on top of lower-index siblings.
+---- Children are listed in descending sibling order in the editor.
 ---
 ---Pending Documentation:
 ---- Unknown return value, seems to always return true.
 ---@param index integer # The 0-indexed position in the parent's list of children. Automatically clamped within the valid range of indexes.
----@return boolean unknown # ?
+---@return boolean unknown # Always true?
 function ClientUIBaseControl:SetSiblingIndex(index) end
 
 ---Sets the size offset between the Client Control and the its anchor bounds.
----
----If anchorMin equals to anchorMax on a given axis, the delta for that axis represents the Client Control's size along that axis.
+---- If anchorMin equals to anchorMax on a given axis, the delta for that axis represents the Client Control's size along that axis.
 ---@param deltaX number # The size offset between the Client Control's width and x-axis anchor bounds.
 ---@param deltaY number # The size offset between the Client Control's height and y-axis anchor bounds.
 function ClientUIBaseControl:SetSizeDelta(deltaX, deltaY) end
