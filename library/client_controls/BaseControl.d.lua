@@ -142,10 +142,9 @@ function ClientUIBaseControl:GetScriptByPath(path) end
 function ClientUIBaseControl:GetScripts() end
 
 ---Returns the 0-indexed position of the Client Control in the parent's list of children.
+---- Higher-index siblings are rendered on top of lower-index siblings.
+---- Children are listed in descending sibling order in the editor.
 ---- Returns -1 for root-level ContainerControls.
----
----**See:**
----- [ClientUIBaseControl.SetSiblingIndex](https://haminpants.github.io/mililua/class/ClientUIBaseControl.html#ClientUIBaseControl.SetSiblingIndex) for detailed sibling-index behavior.
 ---@return number index # The 0-indexed position of the Client Control in the parent's list of children.
 function ClientUIBaseControl:GetSiblingIndex() end
 
@@ -218,7 +217,7 @@ function ClientUIBaseControl:SetAnchoredPosition(x, y) end
 ---Sets the Client Control as the first child (index 0) of its parent.
 ---
 ---**See:**
----- [ClientUIBaseControl.SetSiblingIndex](https://haminpants.github.io/mililua/class/ClientUIBaseControl.html#ClientUIBaseControl.SetSiblingIndex) for detailed sibling-index behavior.
+---- [ClientUIBaseControl.GetSiblingIndex](https://haminpants.github.io/mililua/class/ClientUIBaseControl.html#ClientUIBaseControl.GetSiblingIndex) for detailed sibling-index behavior.
 ---
 ---Pending Documentation:
 ---- Unknown return value, seems to always return true.
@@ -228,7 +227,7 @@ function ClientUIBaseControl:SetAsFirstSibling() end
 ---Sets the Client Control as the last child (greatest index) of its parent.
 ---
 ---**See:**
----- [ClientUIBaseControl.SetSiblingIndex](https://haminpants.github.io/mililua/class/ClientUIBaseControl.html#ClientUIBaseControl.SetSiblingIndex) for detailed sibling-index behavior.
+---- [ClientUIBaseControl.GetSiblingIndex](https://haminpants.github.io/mililua/class/ClientUIBaseControl.html#ClientUIBaseControl.GetSiblingIndex) for detailed sibling-index behavior.
 ---
 ---Pending Documentation:
 ---- Unknown return value, seems to always return true.
@@ -264,8 +263,9 @@ function ClientUIBaseControl:SetLocalScale(x, y, z) end
 function ClientUIBaseControl:SetPivot(x, y) end
 
 ---Sets the 0-indexed position of the Client Control in the parent's list of children.
----- Higher-index siblings are rendered on top of lower-index siblings.
----- Children are listed in descending sibling order in the editor.
+---
+---**See:**
+---- [ClientUIBaseControl.GetSiblingIndex](https://haminpants.github.io/mililua/class/ClientUIBaseControl.html#ClientUIBaseControl.GetSiblingIndex) for detailed sibling-index behavior.
 ---
 ---Pending Documentation:
 ---- Unknown return value, seems to always return true.
