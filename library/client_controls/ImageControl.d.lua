@@ -28,8 +28,7 @@ local ClientUIImageControl = {}
 function ClientUIImageControl:SetImage(imageSource, imageId) end
 
 ---Sets the horizontal and vertical soft edge width.
----
----Changes are applied even if masking and soft edge are disabled.
+---- Changes are applied even if masking and soft edge are disabled.
 ---@param widthX number # The horizontal soft edge width.
 ---@param widthY number # The vertical soft edge width.
 function ClientUIImageControl:SetSoftEdgeWidth(widthX, widthY) end
@@ -49,8 +48,7 @@ function ClientUIImageControl:SetFillUnused() end
 function ClientUIImageControl:SetFillHorizontal(fillHorizontalType, fillAmount) end
 
 ---Sets the fill type to Vertical and sets the vertical fill type and fill amount to the specified values.
----
----Changes are applied even if masking is disabled; masking will not be enabled if disabled when the function is called.
+---- Changes are applied even if masking is disabled; masking will not be enabled if disabled when the function is called.
 ---
 ---**See:**
 ---- [Enum.ImageFillVerticalType](https://haminpants.github.io/mililua/class/Enum.ImageFillVerticalType.html) for all vertical image fill types.
@@ -59,8 +57,7 @@ function ClientUIImageControl:SetFillHorizontal(fillHorizontalType, fillAmount) 
 function ClientUIImageControl:SetFillVertical(fillVerticalType, fillAmount) end
 
 ---Sets the fill type to Radial90 and sets the radial 90 fill type and fill amount to the specified values.
----
----Changes are applied even if masking is disabled; masking will not be enabled if disabled when the function is called.
+---- Changes are applied even if masking is disabled; masking will not be enabled if disabled when the function is called.
 ---
 ---**See:**
 ---- [Enum.ImageFillRadial90Type](https://haminpants.github.io/mililua/class/Enum.ImageFillRadial90Type.html) for all radial 90-degree image fill types.
@@ -69,10 +66,7 @@ function ClientUIImageControl:SetFillVertical(fillVerticalType, fillAmount) end
 function ClientUIImageControl:SetFillRadial90(fillRadial90Type, fillAmount) end
 
 ---Sets the fill type to Radial180 and sets the radial fill type and fill amount to the specified values.
----
----You are currently unable to set the fill direction (clockwise or counter-clockwise).
----
----Changes are applied even if masking is disabled; masking will not be enabled if disabled when the function is called.
+---- Changes are applied even if masking is disabled; masking will not be enabled if disabled when the function is called.
 ---
 ---**See:**
 ---- [Enum.ImageFillRadialType](https://haminpants.github.io/mililua/class/Enum.ImageFillRadialType.html) for all radial image fill types.
@@ -81,10 +75,7 @@ function ClientUIImageControl:SetFillRadial90(fillRadial90Type, fillAmount) end
 function ClientUIImageControl:SetFillRadial180(fillRadialType, fillAmount) end
 
 ---Sets the fill type to Radial360 and sets the radial fill type and fill amount to the specified values.
----
----You are currently unable to set teh fill direction (clockwise or counter-clockwise).
----
----Changes are applied even if masking is disabled; masking will not be enabled if disabled when the function is called.
+---- Changes are applied even if masking is disabled; masking will not be enabled if disabled when the function is called.
 ---
 ---**See:**
 ---- [Enum.ImageFillRadialType](https://haminpants.github.io/mililua/class/Enum.ImageFillRadialType.html) for all radial image fill types.
