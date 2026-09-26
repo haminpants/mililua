@@ -3,10 +3,6 @@
 ---The base type that represents the common fields and functions of all Client Controls. Contains functions for changing fields, setting state, and managing event listeners.
 ---
 ---Client Controls are destroyed and recreated whenever the client enters a loading screen, such as when teleporting or reconnecting.
----
----Pending Documentation:
----- Behavior of anchoredPositionX when anchorMinX is not equal to anchorMaxX
----- Behavior of anchoredPositionY when anchorMinY is not equal to anchorMaxY
 ---@class ClientUIBaseControl
 ---@field alive boolean # [Read] Whether the Client Control is instantiated.
 ---@field id number # [Read] The runtime ID of the Client Control.
@@ -16,8 +12,8 @@
 ---@field visible boolean # [Read] Whether the Client Control is visible.
 ---@field name string # [Read/Write] The name of the Client Control.
 ---@field parent ClientControlType? # [Read/Write] The parent of the Client Control. Always nil for root-level ControlContainers.
----@field anchoredPositionX number # [Read/Write/Tweenable] **(Pending Verification)** The x position of the Client Control's pivot point relative to its anchor point.
----@field anchoredPositionY number # [Read/Write/Tweenable] **(Pending Verification)** The y position of the Client Control's pivot point relative to its anchor point.
+---@field anchoredPositionX number # [Read/Write/Tweenable] The x position of the Client Control's pivot point relative to its anchor point. See [ClientUIBaseControl.GetAnchoredPosition](https://haminpants.github.io/mililua/class/ClientUIBaseControl.html#ClientUIBaseControl.GetAnchoredPosition) for detailed behavior.
+---@field anchoredPositionY number # [Read/Write/Tweenable] The y position of the Client Control's pivot point relative to its anchor point. See [ClientUIBaseControl.GetAnchoredPosition](https://haminpants.github.io/mililua/class/ClientUIBaseControl.html#ClientUIBaseControl.GetAnchoredPosition) for detailed behavior.
 ---@field sizeDeltaX number # [Read/Write/Tweenable] The size offset between the width of the Client Control and its x-axis anchor bounds.
 ---@field sizeDeltaY number # [Read/Write/Tweenable] The size offset between the height of the Client Control and its y-axis anchor bounds.
 ---@field anchorMinX NormalizedPercentage # [Read/Write/Tweenable] The minimum x anchor represented as a normalized percentage of the parent's width originating from the bottom-left corner of the parent's bounding box.
@@ -90,9 +86,7 @@ function ClientUIBaseControl:GetAnchorMin() end
 
 ---Returns the position of the pivot point relative to the anchor point.
 ---- If anchorMin equals to anchorMax on a given axis, the anchor point for that axis resolves to anchorMin.
----
----Pending Documentation:
----- Behavior when anchorMin is not equal to anchorMax on a given axis.
+---- If anchorMin does not equal to anchorMax on a given axis, the anchor point is interpolated between the minimum and maximum anchors based on the control's pivot percentage for that axis.
 ---@return number x # The x-axis distance of the pivot point relative to the anchor point.
 ---@return number y # The y-axis distance of the pivot point relative to the anchor point.
 function ClientUIBaseControl:GetAnchoredPosition() end
@@ -208,8 +202,8 @@ function ClientUIBaseControl:SetAnchorMin(x, y) end
 ---Sets the position of the pivot point relative to the anchor point.
 ---- If anchorMin equals to anchorMax on a given axis, the anchor point for that axis resolves to anchorMin.
 ---
----Pending Documentation:
----- Behavior when anchorMin is not equal to anchorMax on a given axis.
+---**See:**
+---- [ClientUIBaseControl.GetAnchoredPosition](https://haminpants.github.io/mililua/class/ClientUIBaseControl.html#ClientUIBaseControl.GetAnchoredPosition) for detailed anchor point behavior.
 ---@param x number # The x position of the pivot point relative to the anchor point.
 ---@param y number # The y position of the pivot point relative to the anchor point.
 function ClientUIBaseControl:SetAnchoredPosition(x, y) end
