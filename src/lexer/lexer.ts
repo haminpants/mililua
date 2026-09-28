@@ -1,5 +1,7 @@
 export type TokenType =
+    | "KEYWORD"
     | "IDENTIFIER"
+    | "STRING"
 
 export interface Token {
     type: TokenType
@@ -8,8 +10,19 @@ export interface Token {
     length: number
 }
 
+export const KEYWORDS = new Set([
+    `local`, `function`, `return`, `if`, `else`, `elseif`, `then`, `for`, `in`, `while`, `do`, `end`
+])
+
+export const REGEX = {
+    whitespace: /\s/,
+    doubleQuote: /\"/,
+    identifierHead: /[a-zA-Z_]/,
+    identifierBody: /[a-zA-Z0-9_]/
+}
+
 export class Lexer {
-    private idx: number = 0
+    private cursor: number = 0
     private source: string
 
     constructor(_source: string) {
@@ -17,15 +30,15 @@ export class Lexer {
     }
 
     private peek(): string {
-        return this.source[this.idx]
+        return this.source[this.cursor]
     }
 
     private next(): string {
-        return this.source[this.idx++]
+        return this.source[this.cursor++]
     }
 
     isAtEnd(): boolean {
-        return this.idx >= this.source.length
+        return this.cursor >= this.source.length
     }
 
     tokenize(): Token[] {
@@ -33,22 +46,50 @@ export class Lexer {
 
         while (!this.isAtEnd()) {
             const char = this.peek()
-            if (/\s/.test(char)) {
-                this.idx++
+            if (REGEX.whitespace.test(char)) {
+                this.cursor++
                 continue
             }
 
-            if (/[a-zA-Z_]/.test(char)) {
+            // Literals
+            if (REGEX.doubleQuote.test(char)) {
+                this.cursor++
+
+                let literal = ""
+                const _index = this.cursor
+
+                while (!this.isAtEnd() && !REGEX.doubleQuote.test(this.peek())) {
+                    literal += this.next()
+                }
+
+                tokens.push({
+                    type: "STRING",
+                    value: literal,
+                    index: _index,
+                    length: this.cursor - _index
+                })
+
+                this.cursor++
+                continue
+            }
+
+            // Identifiers & Keywords
+            if (REGEX.identifierHead.test(char)) {
                 let identifier = ""
-                const _index = this.idx
-                while (!this.isAtEnd() && /[a-zA-Z0-9_]/.test(this.peek())) {
+                const _index = this.cursor
+
+                while (!this.isAtEnd() && REGEX.identifierBody.test(this.peek())) {
                     identifier += this.next()
                 }
+
+                let _type: TokenType = "IDENTIFIER"
+                if (KEYWORDS.has(identifier)) { _type = "KEYWORD" }
+
                 tokens.push({
-                    type: "IDENTIFIER",
+                    type: _type,
                     value: identifier,
                     index: _index,
-                    length: this.idx - _index
+                    length: this.cursor - _index
                 })
             }
         }
@@ -57,5 +98,7 @@ export class Lexer {
     }
 }
 
-const l = new Lexer('Hello World')
+const text = `local "Hello World"`
+const l = new Lexer(text)
+console.log(text.length)
 console.log(l.tokenize())
