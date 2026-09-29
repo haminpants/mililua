@@ -1,6 +1,7 @@
 export type TokenType =
     | "KEYWORD"
     | "IDENTIFIER"
+    | "NUMBER"
     | "STRING"
 
 export interface Token {
@@ -16,9 +17,11 @@ export const KEYWORDS = new Set([
 
 export const REGEX = {
     whitespace: /\s/,
-    doubleQuote: /\"/,
     identifierHead: /[a-zA-Z_]/,
-    identifierBody: /[a-zA-Z0-9_]/
+    identifierBody: /[a-zA-Z0-9_]/,
+    numberHead: /[0-9]/,
+    numberBody: /[0-9\.]/,
+    doubleQuote: /\"/,
 }
 
 export class Lexer {
@@ -52,6 +55,33 @@ export class Lexer {
             }
 
             // Literals
+            if (REGEX.numberHead.test(char)) {
+                let number = ""
+                let isFloat = false
+                const _index = this.cursor
+
+                while (!this.isAtEnd() && REGEX.numberBody.test(this.peek())) {
+                    if (this.peek() == ".") {
+                        if (!isFloat) {
+                            isFloat = true
+                        }
+                        else {
+                            break
+                        }
+                    }
+                    number += this.next()
+                }
+
+                tokens.push({
+                    type: "NUMBER",
+                    value: number,
+                    index: _index,
+                    length: this.cursor - _index
+                })
+
+                continue
+            }
+
             if (REGEX.doubleQuote.test(char)) {
                 this.cursor++
 
@@ -91,14 +121,18 @@ export class Lexer {
                     index: _index,
                     length: this.cursor - _index
                 })
+
+                continue
             }
+
+            throw new Error(`Unexpected character: ${char} at position ${this.cursor}`)
         }
 
         return tokens
     }
 }
 
-const text = `local "Hello World"`
+const text = `local "Hello World" 1234134.12341234 0.1234`
 const l = new Lexer(text)
 console.log(text.length)
 console.log(l.tokenize())
