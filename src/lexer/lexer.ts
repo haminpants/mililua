@@ -3,6 +3,7 @@ export type TokenType =
     | "IDENTIFIER"
     | "NUMBER"
     | "STRING"
+    | "EOF"
 
 export interface Token {
     type: TokenType
@@ -128,6 +129,12 @@ export class Lexer {
             throw new Error(`Unexpected character: ${char} at position ${this.cursor}`)
         }
 
+        tokens.push({
+            type: "EOF",
+            value: "",
+            index: this.source.length,
+            length: 0
+        })
         return tokens
     }
 }
