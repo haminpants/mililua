@@ -3,6 +3,14 @@ export type TokenType =
     | "IDENTIFIER"
     | "NUMBER"
     | "STRING"
+    | "ADD"
+    | "SUBTRACT"
+    | "MULTIPLY"
+    | "DIVIDE"
+    | "INCREMENT"
+    | "DECREMENT"
+    | "EQUALS"
+    | "NOT_EQUALS"
     | "EOF"
 
 export interface Token {
@@ -50,6 +58,8 @@ export class Lexer {
 
         while (!this.isAtEnd()) {
             const char = this.peek()
+            const _index = this.cursor
+
             if (REGEX.whitespace.test(char)) {
                 this.cursor++
                 continue
@@ -59,7 +69,6 @@ export class Lexer {
             if (REGEX.numberHead.test(char)) {
                 let number = ""
                 let isFloat = false
-                const _index = this.cursor
 
                 while (!this.isAtEnd() && REGEX.numberBody.test(this.peek())) {
                     if (this.peek() == ".") {
@@ -87,7 +96,6 @@ export class Lexer {
                 this.cursor++
 
                 let literal = ""
-                const _index = this.cursor
 
                 while (!this.isAtEnd() && !REGEX.doubleQuote.test(this.peek())) {
                     literal += this.next()
@@ -107,7 +115,6 @@ export class Lexer {
             // Identifiers & Keywords
             if (REGEX.identifierHead.test(char)) {
                 let identifier = ""
-                const _index = this.cursor
 
                 while (!this.isAtEnd() && REGEX.identifierBody.test(this.peek())) {
                     identifier += this.next()
@@ -126,6 +133,30 @@ export class Lexer {
                 continue
             }
 
+            // Operators
+            switch (char) {
+                case "+":
+                    this.cursor++
+                    if (this.peek() === "+") {
+                        this.cursor++
+                        tokens.push({
+                            type: "INCREMENT",
+                            value: "++",
+                            index: _index,
+                            length: 2
+                        })
+                    }
+                    else {
+                        tokens.push({
+                            type: "ADD",
+                            value: "+",
+                            index: _index,
+                            length: 1
+                        })
+                    }
+                    continue;
+            }
+
             throw new Error(`Unexpected character: ${char} at position ${this.cursor}`)
         }
 
@@ -135,11 +166,12 @@ export class Lexer {
             index: this.source.length,
             length: 0
         })
+
         return tokens
     }
 }
 
-const text = `local "Hello World" 1234134.12341234 0.1234`
+const text = `local "Hello World" 1234134.12341234 0.1234 + ++`
 const l = new Lexer(text)
 console.log(text.length)
 console.log(l.tokenize())
